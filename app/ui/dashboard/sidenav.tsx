@@ -2,6 +2,7 @@ import Link from 'next/link';
 import NavLinks from '@/app/ui/dashboard/nav-links';
 import AcmeLogo from '@/app/ui/acme-logo';
 import { PowerIcon } from '@heroicons/react/24/outline';
+import { signOut } from '@/auth';
 
 export default function SideNav() {
   return (
@@ -27,3 +28,14 @@ export default function SideNav() {
     </div>
   );
 }
+<form
+  action={async () => {
+    'use server';
+    await signOut({ redirectTo: '/' });
+  }}
+>
+  <button className="...">
+    <PowerIcon className="w-6" />
+    <div className="hidden md:block">Sign Out</div>
+  </button>
+</form>
